@@ -1,0 +1,58 @@
+ The useEffect hook is a powerful tool in React that allows you to perform side-effects in functional components. Side-effects are any actions that go beyond rendering, such as fetching data from an API, subscribing to events, or updating the browser's title.
+
+Here are some reasons why useEffect is important:
+
+    Managing state: useEffect can be used to manage state in functional components, by updating state variables in response to changes in other state variables or props.
+
+    Fetching data: useEffect can be used to fetch data from APIs or databases, allowing you to dynamically update the content of your component without requiring a full-page refresh.
+
+    Subscribing to events: useEffect can be used to subscribe to events, such as window resize or keyboard input, allowing you to create interactive user interfaces.
+
+    Cleaning up: useEffect allows you to clean up after a side-effect by returning a function. This is especially useful when subscribing to events or setting up timers, as it ensures that your component doesn't continue to run unnecessary code after it's been unmounted.
+
+    Performance optimizations: useEffect can be used to optimize the performance of your component, by avoiding unnecessary re-renders or only updating specific parts of the component when necessary.
+
+Overall, the useEffect hook provides a flexible and efficient way to manage side-effects in your React components, making it a crucial tool in any React developer's toolkit.
+
+
+
+
+
+Example 1. In this example, useEffect is used without any dependencies, so it will be called every time the component re-renders. Whenever the handleButtonClick function is called, the count state variable will be incremented by 1, causing the component to re-render, and therefore causing useEffect to be called again.
+
+In this case, the useEffect hook is simply logging a message to the console, but it could be used to perform any side-effect, such as fetching data from an API or updating the browser's title.
+
+
+
+
+
+Example 2 .In this example, we have two useEffect hooks. The first one logs the value of the count state variable whenever it changes. The second one logs the value of the name state variable whenever it changes.
+
+Each useEffect hook takes an array as its second argument, which contains the dependencies of the effect. In this case, the count effect depends on the count state variable, and the name effect depends on the name state variable.
+
+When the count or name state variable changes, React will re-render the component and trigger the corresponding useEffect hook, which will run its effect function.
+
+Note that if you don't pass any dependencies to useEffect, the effect function will run after every re-render of the component. But by specifying the dependencies, you can make the effect function run only when the relevant state or variable changes, optimizing the performance of your component.
+
+
+Example 3. 
+In this example, we have a functional component called Example that takes a prop called name. We use the useEffect hook to update the greeting state variable when name changes.
+
+///// When prop is not passed :-
+In this example, the Example component takes a prop called name. We use the useEffect hook to update the greeting state variable when name changes.
+
+The second argument of useEffect is an array containing the dependencies of the effect. In this case, we pass [name] as the dependency array, which means that the effect function will only be called when name changes.
+
+If name is initially null or undefined, the effect function will not be called until name is passed as a prop to the component. Once name is passed, the effect function will be called, and it will set the greeting state variable based on the value of name.
+
+This is a useful pattern for ensuring that your component only performs expensive operations or updates when necessary, optimizing the performance of your application.
+
+///// When prop is passed.
+
+In this example, we've added a console.log statement inside the useEffect hook to log when it is called. When the component is rendered, the useEffect hook will be called once with the initial value of the name prop.
+
+If you pass a new value for name to the Example component, the useEffect hook will be called again with the new value of name, and the console.log statement will be logged to the console each time the hook is called.
+
+
+
+Example 4. In this example, we use the empty dependency array [] as the second argument to useEffect. This means that the effect function will only be called once, when the component loads for the first time.
